@@ -10,7 +10,7 @@ class Post(models.Model):
     def __unicode__(self):
         return self.post_text[:15]+"..." if len(self.post_text)>15 else ""
 
-    def was_published_recently(self):
+    def is_recent(self):
         return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
 
 class Comment(models.Model):

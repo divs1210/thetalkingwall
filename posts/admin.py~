@@ -11,7 +11,7 @@ class PostAdmin(admin.ModelAdmin):
         ('Date information', {'fields': ['pub_date'], 'classes': ['collapse']}),
     ]
     inlines = [CommentInline]
-    list_display = ('author', 'pub_date', 'post_text')
+    list_display = ('author', 'pub_date')
     list_filter = ['author', 'pub_date']
     search_fields = ['post_text', 'author']
 

@@ -20,4 +20,4 @@ class Comment(models.Model):
     upvotes      = models.IntegerField(default=0)
 
     def __unicode__(self):
-        return self.post_text[:15]+"..." if len(self.comment_text)>15 else ""
+        return self.comment_text[:15]+"..." if len(self.comment_text)>15 else ""
