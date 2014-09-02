@@ -1,0 +1,6 @@
+<h1>{{ post.author }} - {{ post.post_text }}</h1>
+<ul>
+{% for comment in post.comment_set.all %}
+    <li><b>{{ comment.author }}</b> {{ comment.comment_text }}</li>
+{% endfor %}
+</ul>
