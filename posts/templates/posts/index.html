@@ -1,9 +1,29 @@
+<head>
+    <script>
+    function addNewPost(){
+        msg = message.value;
+        post("stranger", "#", msg, Date());
+        message.value = "";
+    }
+    
+    function post(author, url, msg, time){
+        //todo- add to db
+        posts.innerHTML+="<li><b>"+author+"</b> <a href=\""+url+"\">"+msg+"</a> <i>"+time+"</i></li>";
+    }
+    </script>
+</head>
+
 {% if latest_post_list %}
-    <ul>
+    <input type="text" id="message"/><input type="button" value="Post" onclick="addNewPost()"/>
+    <ul id="posts"></ul>
+    <script>
     {% for post in latest_post_list %}
-        <li><b>{{ post.author }}</b> <a href="{% url 'posts:apost' post.id %}">{{ post.post_text }}</a></li>
+        post(unescape('{{ post.author }}'), 
+             unescape('{% url 'posts:apost' post.id %}'), 
+             unescape('{{ post.post_text }}'), 
+             unescape('{{ post.pub_date }}'));
     {% endfor %}
-    </ul>
+    </script>
 {% else %}
     <p>No posts are available.</p>
 {% endif %}
